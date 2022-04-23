@@ -41,8 +41,8 @@ fi
 
 tc="$problem_dir/tc"
 
-go=$(find $problem_dir -depth 1 -type f -name "*.go")
-python=$(find $problem_dir -depth 1 -type f -name "*.py")
+go=$(find $problem_dir -type f -name "*.go")
+python=$(find $problem_dir -type f -name "*.py")
 
 if ! [ -d $tc ]; then
         echo "no test case found."
@@ -81,6 +81,7 @@ if ! [ -f $tc/tester.cpp ]; then
                         i=${i%.txt}
 
                         start=$(date +'%s')
+                        touch "$tc/out/output$i.txt"
 
                         go run $go < $input > "$tc/out/output$i.txt"
 
